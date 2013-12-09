@@ -41,6 +41,7 @@ class UserService implements ServiceManagerAwareInterface
         $em = $this->getServiceManager()->get('entity_manager');
         $em->persist($user);
         $em->flush();
+        //
     }
 
     public function removeUser(\Application\Entity\User $user)

@@ -72,6 +72,31 @@ return array(
                             ),
                         ),
                     ),
+
+					'column' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/order/:column',
+                            'defaults' => array(
+                                'action'    =>  'list',
+								':column'    =>  null
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'order' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/:order',
+                                    'defaults' => array(
+                                        'action'    =>  'list',
+                                        ':order'    =>  'asc'
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+
                     'remove' => array(
                         'type'    => 'Segment',
                         'options' => array(

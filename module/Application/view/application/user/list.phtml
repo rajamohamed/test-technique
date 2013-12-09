@@ -1,5 +1,5 @@
-<a href="<?=$this->url('users/add')?>" class='btn btn-primary'>
-    <?=$this->translate('__add_user')?>
+<a href="<?php echo $this->url('users/add')?>" class='btn btn-primary'>
+    <?php echo $this->translate('__add_user')?>
 </a>
 
 <br/>
@@ -9,16 +9,24 @@
     <thead>
         <tr>
             <th>
-                <?=$this->translate('__user_id')?>
+                <?php                 
+                echo '<a href="/test/public/users/order/id/'.$this->order.'">'.$this->translate('__user_id').'</a>';
+                ?>
             </th>
             <th>
-                <?=$this->translate('__user_firstname')?>
+                <?php echo '<a href="/test/public/users/order/firstName/'.$this->order.'">'.$this->translate('__user_firstname').'</a>'?>
             </th>
             <th>
-                <?=$this->translate('__user_lastname')?>
+                <?php echo '<a href="/test/public/users/order/lastName/'.$this->order.'">'.$this->translate('__user_lastname').'</a>'?>
             </th>
             <th>
-                <?=$this->translate('__user_email')?>
+                <?php echo '<a href="/test/public/users/order/email/'.$this->order.'">'.$this->translate('__user_email').'</a>'?>
+            </th>
+            <th>
+                <?php echo $this->translate('__user_birthday')?>
+            </th>
+            <th>
+                <?php echo '<a href="/test/public/users/order/zipcode/'.$this->order.'">'.$this->translate('__user_zipcode').'</a>'?>
             </th>
             <th></th>
         </tr>
@@ -26,32 +34,39 @@
     <tbody>
     <?php
     /* @var $user \Application\Entity\User */
+
     foreach($this->users as $user)
     {
         ?>
         <tr>
-        <td>
-            <?=$user['id']?>
-        </td>
-        <td>
-            <?=$user['profile']['firstname']?>
-        </td>
-        <td>
-            <?=$user['profile']['lastname']?>
-        </td>
-        <td>
-            <a href='mailto:<?=$user['email']?>'>
-                <?=$user['email']?>
-            </a>
-        </td>
-        <td>
-            <a href="<?=$this->url('users/edit', array('user_id'   =>  $user['id']))?>" class="btn btn-success">
-                <?=$this->translate('__edit_user')?>
-            </a>
-           <a href="<?=$this->url('users/remove', array('user_id'   =>  $user['id']))?>" class="btn btn-danger">
-            <?=$this->translate('__remove_user')?>
-           </a>
-        </td>
+			<td>
+				<?php echo $user['id']?>
+			</td>
+			<td>
+				<?php echo $user['profile']['firstName']?>
+			</td>
+			<td>
+				<?php echo $user['profile']['lastName']?>
+			</td>
+			<td>
+				<a href='mailto:<?php echo $user['email']?>'>
+					<?php echo $user['email']?>
+				</a>
+			</td>
+            <td>
+                <?php echo $user['profile']['birthday']->format('Y-m-d')?>
+            </td>
+            <td>
+                <?php echo $user['profile']['zipcode']?>
+            </td>
+			<td>
+				<a href="<?php echo $this->url('users/edit', array('user_id'   =>  $user['id']))?>" class="btn btn-success">
+					<?php echo $this->translate('__edit_user')?>
+				</a>
+			   <a href="<?php echo $this->url('users/remove', array('user_id'   =>  $user['id']))?>" class="btn btn-danger">
+				<?php echo $this->translate('__remove_user')?>
+			   </a>
+			</td>
         </tr>
         <?php
     }

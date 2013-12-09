@@ -10,12 +10,16 @@ return array(
     '__user_firstname'  =>  'Prénom',
     '__user_lastname'   =>  'Nom',
     '__user_email'  =>  'Adresse email',
+    '__user_birthday'  =>  'Date de naissance',
+    '__user_zipcode'  =>  'Code postal',
 
     //Form User
 
     '__label_user_firstname'    =>  'Prénom',
     '__label_user_lastname'     =>  'Nom',
     '__label_user_email'        =>  'Email',
+    '__label_user_birthday'  =>  'Date de naissance',
+	'__label_user_zipcode'  =>  'Code postal',
     '__label_user_password'     =>  'Password',
     '__save'                    =>  'Enregistrer',
 

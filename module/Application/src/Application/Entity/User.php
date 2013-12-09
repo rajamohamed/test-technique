@@ -4,6 +4,7 @@ namespace Application\Entity;
 
 use Application\Entity\EntityAbstract;
 
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,7 +33,7 @@ class User extends EntityAbstract
 
     /**
     *
-    * @ORM\OneToOne(targetEntity="Profile",fetch="LAZY" , cascade={"persist","merge","detach"})
+    * @ORM\OneToOne(targetEntity="Profile",fetch="LAZY" , inversedBy="user", cascade={"persist","merge","detach","remove"})
     *
     * @var Profile
     */
@@ -165,6 +166,26 @@ class User extends EntityAbstract
 
         $this->getProfile()->setFirstName($firstname);
     }
+	
+	public function setBirthday($birthday)
+    {
+        if(!is_object($this->getProfile()))
+        {
+            $this->setProfile(new Profile());
+        }
+
+        $this->getProfile()->setBirthday(new \DateTime($birthday));
+    }
+
+    public function setZipcode($zipcode)
+    {
+        if(!is_object($this->getProfile()))
+        {
+            $this->setProfile(new Profile());
+        }
+
+        $this->getProfile()->setZipcode($zipcode);
+    }
 
     public function setLastname($lastname)
     {
@@ -179,6 +200,11 @@ class User extends EntityAbstract
     public function getFirstName()
     {
         return $this->getProfile()->getFirstName();
+    }
+	
+	public function getLastName()
+    {
+        return $this->getProfile()->getLastName();
     }
 
 }

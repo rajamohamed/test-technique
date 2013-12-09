@@ -59,6 +59,24 @@ class Profile extends EntityAbstract
     protected $address;
 
     /**
+     * Birthday
+     *
+     * @ORM\Column(type="date", nullable=true)
+     *
+     * @var date
+     */
+    protected $birthday;
+
+    /**
+     * Zipcode
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var int
+     */
+    protected $zipcode;
+	
+    /**
      * @var datetime $created
      *
      * @ORM\Column(type="datetime")
@@ -155,6 +173,52 @@ class Profile extends EntityAbstract
     public function getAddress()
     {
         return $this->address;
+    }
+	
+    /**
+     * Set birthday
+     *
+     * @param string $address
+     * @return Profile
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get birthday
+     *
+     * @return date
+     */
+    public function getBirthday()
+    {
+        return $this->birthday; 
+    }
+
+     /**
+     * Set zipcode
+     *
+     * @param integer $zipcode
+     * @return Profile
+     */
+    public function setZipcode($zipcode)
+    {
+        $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    /**
+     * Get zipcode
+     *
+     * @return integer
+     */
+    public function getZipcode()
+    {
+        return $this->zipcode;
     }
 
     /**
